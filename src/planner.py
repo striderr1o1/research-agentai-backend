@@ -1,7 +1,8 @@
 from groq import Groq
 import os
 import json
-from main import State
+from dotenv import load_dotenv
+load_dotenv()
 from pydantic import BaseModel
 client = Groq(
     api_key=os.environ.get("GROQ_API_KEY")
@@ -11,11 +12,11 @@ class Plan(BaseModel):
     retrieval_task: str
     summarizer_task: str
 
-def RunPlannerAgent(state: State) -> State:
+def RunPlannerAgent(state):
     planner_llm = client.chat.completions.create(
         model=os.environ.get('CHAT_GROQ_MODEL'),
         messages=[
-            {"role": "system", "content": f"""You are a Planner Agent in a workflow system. 
+            {"role": "system", "content": """You are a Planner Agent in a workflow system. 
              Your job is to divide a user query into the appropriate tasks for downstream agents: Search Agent, Retriever Agent, and Summarizer Agent. 
 
              Follow these rules:
