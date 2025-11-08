@@ -1,0 +1,5 @@
+langgraph
+groq
+streamlit
+PyPDF2
+pypdf
