@@ -1,32 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Assistant</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-<body>
-    <div class="container">
-        <h1>Research Assistant</h1>
-        <div class="chat-window">
-            <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be appended here -->
-            </div>
-            <div class="chat-input">
-                <input type="file" id="pdf-upload" multiple accept=".pdf" title="Upload PDF">
-                <label for="pdf-upload" class="upload-btn">
-                    <i class="material-icons">attach_file</i>
-                </label>
-                <input type="text" id="query-input" placeholder="Enter your query...">
-                <button id="send-button">Send</button>
-            </div>
-        </div>
-    </div>
-    <div id="loading-indicator" style="display: none;">
-        <div class="spinner"></div>
-    </div>
-    <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research Agent | AI-Powered Document Analysis</title>
+    <meta name="description" content="Advanced AI research agent for analyzing PDFs and synthesizing insights. Upload documents, ask questions, and get comprehensive research summaries." />
+    <meta name="author" content="Research Agent" />
+
+    <meta property="og:title" content="Research Agent | AI-Powered Document Analysis" />
+    <meta property="og:description" content="Advanced AI research agent for analyzing PDFs and synthesizing insights. Upload documents, ask questions, and get comprehensive research summaries." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
