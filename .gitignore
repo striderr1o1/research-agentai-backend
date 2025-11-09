@@ -3,3 +3,4 @@ customersupport.pdf
 GEMINI.md
 node_modules/
 frontend/
+__pycache__/
