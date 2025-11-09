@@ -34,6 +34,9 @@ Starting with the backend, we have:
 - search.py: checks if any task assigned to the searcher node, if yes, searches the internet using tavily api and LLM generates summary or insights.
 - summarizer.py: summarizes all the insights
 - test.py (ignore this)
+## video link:
+project demo: https://drive.google.com/file/d/15YWnCZEneZ_KCw789Dz-_RLlVMctIt0K/view
+tech video: https://drive.google.com/file/d/1DPYQvFHMy6Rt9gKHgggyyU8ZpRZ0bYvw/view?usp=sharing
 
 ## License
 MIT
