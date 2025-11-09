@@ -29,6 +29,7 @@ def RunSummarizerAgent(state):
                  - support your answers from the provided data, include references
                  - if PDF insights are not available, provide information from search insights, but must include references and URLs from that data 
                  - if both PDF and search data are not available then provide information from your own.
+                 - use asterisk(*) instead of dagger †
                  """
                 },
                 {
