@@ -22,7 +22,7 @@ def retrieve_pdfs(state):
         State: The updated state with extracted data from PDFs.
     """
 
-    if state["plan"].get("retrieval_task") is not None:
+    if state["plan"].get("extraction_task") is not None:
         # Ensure retrieved_data is initialized as a list if it's not already
         if 'retrieved_data' not in state or not isinstance(state['retrieved_data'], list):
             state['retrieved_data'] = []
@@ -41,7 +41,7 @@ def retrieve_pdfs(state):
                 print(f"Extracted data from {pdf_name} and added to retrieved_data.")
             except Exception as e:
                 print(f"Error processing {pdf_name}: {e}")
-    
+                
         return state
     else:
         print("Noneeee")

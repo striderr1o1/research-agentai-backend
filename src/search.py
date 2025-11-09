@@ -3,9 +3,9 @@ import os
 from dotenv import load_dotenv
 from groq import Groq
 load_dotenv()
-client = Groq(
-    api_key=os.environ.get("GROQ_API_KEY")
-)
+# client = Groq(
+#     api_key=os.environ.get("GROQ_API_KEY")
+# )
 def Search(Query):
     tavily_client = TavilyClient(api_key=os.environ.get('TAVILY_API_KEY'))
     response = tavily_client.search(f"{Query}")
@@ -17,6 +17,8 @@ def RunsearchAgent(state):
         query = state["plan"].get("search_task")
         results = Search(query)
         state["search_results"].append(results)
+        print("\n\n")
+        print(results)
         return state
     else:
         print("No search required")
