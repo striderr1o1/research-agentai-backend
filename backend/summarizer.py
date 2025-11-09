@@ -38,7 +38,7 @@ def RunSummarizerAgent(state):
         )
         Article = response.choices[0].message.content
         state["summarized_data"] = Article
-        print("\n " + Article + "\n")
+        # print("\n " + Article + "\n")
         return state
     else:
         return state

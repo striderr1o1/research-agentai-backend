@@ -43,7 +43,7 @@ def RunsearchAgent(state):
         )
         insights = Search_summary.choices[0].message.content
         state["search_summary"] = insights
-        print(state["search_summary"] + "--end")
+        # print(state["search_summary"] + "--end")
         return state
     else:
         print("No")

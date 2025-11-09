@@ -42,9 +42,10 @@ def retrieve_pdfs(state):
                 text = ""
                 for page in reader.pages:
                     text += page.extract_text() or ""
-                
+                    
                 # Append the extracted text to the retrieved_data list
                 state['retrieved_data'].append(text)
+                # print(text)
                 print(f"Extracted data from {pdf_name} and added to retrieved_data.")
             except Exception as e:
                 print(f"Error processing {pdf_name}: {e}")
@@ -73,7 +74,7 @@ def RunExtractionAgent(state):
         )
         insights = extractionTask.choices[0].message.content
         state["extracted_insights"] = insights
-        print("\n" + insights + "\n")
+        # print("\n" + insights + "\n")
         return state
     else:
         return state
