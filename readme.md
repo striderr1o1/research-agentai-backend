@@ -12,12 +12,12 @@ Git repository has four branches:
 ## How to start:
 ### backend:
 - clone the repo
-- move to backend-service branch
+- cd backend
 - run ```pip install -r requirements.txt```
 - run server ```uvicorn main:app --reload``` from the backend directory
 
 ### frontend:
-- move to frontend branch
+- cd frontend
 - run ```npm install``` to install dependencies
 - run ``` npx vite``` fron the frontend directory
 
