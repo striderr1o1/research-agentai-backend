@@ -9,7 +9,7 @@ client = Groq(
 )
 class Plan(BaseModel):
     search_task: str
-    retrieval_task: str
+    extraction_task: str
     summarizer_task: str
 
 def RunPlannerAgent(state):

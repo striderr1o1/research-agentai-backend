@@ -10,28 +10,29 @@ client = Groq(
 
 def RunSummarizerAgent(state):
     if state["plan"].get("summarizer_task") is not None:
+        task = state["plan"].get("summarizer_task")
         if state["plan"].get("extraction_task") is not None:
-            PdfResults = state["retrieved_data"]
+            PdfInsights = state["extracted_insights"]
         else:
-            PdfResults = ""
+            PdfInsights = ""
         if state["plan"].get("search_task") is not None:
-            SearchResults = state["search_results"]
+            SearchSummary = state["search_summary"]
         else:
-            SearchResults = ""
+            SearchSummary = ""
         response = client.chat.completions.create(
             model=os.environ.get('CHAT_GROQ_MODEL'),
             messages=[
                 {"role": "system", "content": """
-                 You are a content summarize agent. You summarize PDF results and search results into a
+                 You are a content summarize agent. You summarize PDF insights from Extractor Agent and search summary from other agent into a
                  research article with insights from that data. 
                  - Create a detailed research article
                  - support your answers from the provided data, include references
-                 - if PDF results are not available, provide information from search results
-                 - if both PDF and search results are not available then provide information from your own.
+                 - if PDF insights are not available, provide information from search insights, but must include references and URLs from that data 
+                 - if both PDF and search data are not available then provide information from your own.
                  """
                 },
                 {
-                    "role":"user", "content": f"""Query: {state["query"]}\nPDF data: {PdfResults}\nSearch Results: {SearchResults}"""
+                    "role":"user", "content": f"""Your task assigned by planner agent: {task}\nPDF Insights from PDF agent: {PdfInsights}\nSearch insights from other agent: {SearchSummary}"""
                 }
             ]
         )

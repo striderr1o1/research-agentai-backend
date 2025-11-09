@@ -1,5 +1,12 @@
 from typing import TypedDict, Dict, List
 from PyPDF2 import PdfReader
+from dotenv import load_dotenv
+load_dotenv()
+import os
+from groq import Groq
+client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY")
+)
 # from main import State
 # class State(TypedDict):
 #     uploaded_pdfs: dict
@@ -45,4 +52,28 @@ def retrieve_pdfs(state):
         return state
     else:
         print("Noneeee")
+        return state
+
+def RunExtractionAgent(state):
+    if state["plan"].get("extraction_task") is not None:
+        retrieve_pdfs(state)
+        task = state["plan"].get("extraction_task")
+        extractionTask = client.chat.completions.create(
+            model=os.environ.get('CHAT_GROQ_MODEL'),
+            messages=[
+                {"role": "system", "content": """You are an Extraction agent that extracts key insights
+                 from the PDF extracted text. You receive message from the planner agent, and he assigns you
+                 the task."""
+                },
+                {
+                    "role":"user", "content": f"""Your task assigned by planner agent: {task}\nExtracted Data from PDF: {state["retrieved_data"]}"""
+                }
+            ]
+            
+        )
+        insights = extractionTask.choices[0].message.content
+        state["extracted_insights"] = insights
+        print("\n" + insights + "\n")
+        return state
+    else:
         return state
