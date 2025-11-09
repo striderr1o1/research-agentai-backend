@@ -1,0 +1,18 @@
+GenerateQuery = client.chat.completions.create(
+            model=os.environ.get('CHAT_GROQ_MODEL'),
+            messages=[
+                {"role": "system", "content": """
+                 You are an internet search query designer. You get the user's query and based on the topic being asked
+                 about, you generate a new query and returnt only that new query.
+                 For example:
+                 You get: 'Conduct a research on dengue virus',
+                 you generate: 'What is dengue virus? what are its effects? what are possible remedies'
+                 Only return this part: 'What is dengue virus? what are its effects? what are possible remedies',
+                 nothing else..."""
+                },
+                {
+                    "role":"user", "content": f"""{state['query']}"""
+                }
+            ]
+        )
+        GeneratedQuery = GenerateQuery.choices[0].message.content

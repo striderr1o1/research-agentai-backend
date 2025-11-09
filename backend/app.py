@@ -35,25 +35,3 @@ def runWorkflow(graph_builder):
     graph = graph_builder.compile()
 
     return graph
-
-
-
-#testing---------------------------------------
-# Create initial state instance
-newstate = State(
-    uploaded_pdfs={},
-    query="Will Ai replace software engineers?",
-    plan={},
-    retrieved_data=[],
-    extracted_insights="",
-    search_results="",
-    search_summary="",
-    summarized_data=""
-)
-
-# Initialize StateGraph with the State class, not instance
-graph_builder = StateGraph(State)
-graph = runWorkflow(graph_builder)
-
-# Invoke the graph with the state instance
-graph.invoke(newstate)

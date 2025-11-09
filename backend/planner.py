@@ -45,7 +45,7 @@ def RunPlannerAgent(state):
 """
             },
             {
-                "role":"user", "content": f"""{state['query']}"""
+                "role":"user", "content": f"""{state['query']}, PDFs uploaded: {pdfs}"""
             }
         ],
         response_format={
